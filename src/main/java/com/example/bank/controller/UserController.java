@@ -1,5 +1,6 @@
 package com.example.bank.controller;
 
+import com.example.bank.dto.LoginDTO;
 import com.example.bank.entity.User;
 import com.example.bank.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +27,10 @@ public class UserController {
     public ResponseEntity<User> join(@RequestBody User user) {
         userService.Register(user);
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginDTO> login(@RequestBody LoginDTO loginDTO) {
+        userService.UserFindId(loginDTO.getUserId());
     }
 }

@@ -1,9 +1,11 @@
 package com.example.bank.service;
 
+import com.example.bank.dto.LoginDTO;
 import com.example.bank.entity.User;
 import com.example.bank.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -32,7 +34,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User Login(User user) {
-        return null;
+    public ResponseEntity<LoginDTO> Login(LoginDTO loginDTO) {
+        String userId = loginDTO.getUserId();
+        User LoginUser = userRepository.findByUsername(userId);
+        ResponseEntity.ok(loginDTO);
     }
 }

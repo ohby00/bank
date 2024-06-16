@@ -1,6 +1,8 @@
 package com.example.bank.service;
 
+import com.example.bank.dto.LoginDTO;
 import com.example.bank.entity.User;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
 
@@ -10,5 +12,5 @@ public interface UserService {
 
     Optional<User> UserFindId(Long id);
 
-    User Login(User user);
+    ResponseEntity<LoginDTO> Login(LoginDTO loginDTO);
 }
